@@ -7,6 +7,10 @@ html {
   overflow:initial;
   font-family: 'Titillium Web', sans-serif;
 }*/
+html{
+  font-family: 'Titillium Web', sans-serif;
+
+}
 #loader {
   position: absolute;
   top: 50%;
@@ -292,6 +296,7 @@ html{
 .about{
     font-size:1.9em;
     text-align: justify;
+    letter-spacing: 5px;
 }
 .event-details{
   font-size:1.5em;
@@ -301,7 +306,7 @@ html{
 }
 .acc-desc{
   padding: 15px 15px 15px 15px;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   background: #716B66;
   overflow:initial;
@@ -391,20 +396,8 @@ html{
   left: 0;
   right: 0;
   color: #FFF;
-  text-align: center;
-  /*font-family: "lato", sans-serif;*/
-  font-weight: 300;
- /* font-size: 50px;*/
-  letter-spacing: 10px;
   margin-top: -60px;
   padding-left: 10px;
-  font-size:5vw;
-	z-index: -1;
-}
-#title span {
-  background: -webkit-linear-gradient(white, #38495a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 	z-index: -1;
 }
 .member{
@@ -484,7 +477,8 @@ html{
 	z-index: 0;
 }
 #tech-team{
-	
+  z-index: 100;
+  position: absolute;
 }
 #basic_dash{
 	z-index:1000998;

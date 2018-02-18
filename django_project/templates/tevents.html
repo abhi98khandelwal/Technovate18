@@ -28,8 +28,6 @@
     <script>
     $(window).on('load',function () {
       $('#loader').fadeOut("slow");
-      
-
     });
     </script>
    <style>
@@ -459,11 +457,14 @@
   <div class="dot"></div>
   <div class="dot"></div>
 </div>
-<div id="particles-js"></div>
+<!--<div id="particles-js"></div>-->
 <!-- Navigation Panel -->
-<div class="navbar-fixed">
+<div id='stars'></div>
+  <div id='stars2'></div>
+  <div id='stars3'></div>
+<div class="navbar">
   <nav class="transparent">
-    <div class="nav-wrapper container">
+    <div class="nav-wrapper">
       <a class="brand-logo hide-on-med-and-down" class="indexlink" href="#"><img id ="navbar-logo-official"src="{% static 'logo_mini.png' %}"></a>
     <!--  <a class="barnd-logo" id="indexlink" href="#">" CREATE INNOVATE TECHNOVATE"</a>-->
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -471,15 +472,16 @@
           <li><a class="tooltipped homelink" data-position="bottom" data-delay="50" data-tooltip="Go back to home" href="#">HOME</a></li>
           <li><a class="tooltipped techeventslink" data-position="bottom" data-delay="50" data-tooltip="Explore events...">EVENTS</a></li>
           <li><a class="tooltipped gameZone" data-position="bottom" data-delay="50" data-tooltip="Explore events...">GAMEZONE</a></li>
-          <!--<li><a class="tooltipped workshoplink" data-position="bottom" data-delay="50" data-tooltip="View Workshop" href="#">WORKSHOP</a></li>-->
+          <li><a class="tooltipped workshoplink" data-position="bottom" data-delay="50" data-tooltip="View Workshop" href="#">WORKSHOP</a>
           <li><a class="tooltipped teamlink" data-position="bottom" data-delay="50" data-tooltip="Meet the team.." href="#">OUR TEAM</a></li>
           <li><a class="tooltipped sponsorslink" data-position="bottom" data-delay="50" data-tooltip="View sponsors" href="#">SPONSORS</a></li>
+          <li><a class="tooltipped accomodation" data-position="bottom" data-delay="50" data-tooltip="Hospitality" href="#">HOSPITALITY</a></li>
           {% if request.user.is_authenticated %}
             <li><a  class="tooltipped dashboardlink" data-position="bottom" data-delay="50" data-tooltip="Go to dashboard" href="#"><i class="material-icons">dashboard</i></a></li>
             <li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Log Out" href="{% url 'logout' %}"><i class="material-icons ">power_settings_new</i></a></li>
             {% else %}
-          <!--<li><a class="modal-trigger" href="#modal1">LOGIN/SIGN UP</a></li>
-          <li><a class="modal-trigger" href="#modal2">CAMPUS AMBASSADOR</a></li>-->
+          <li><a class="modal-trigger" href="#modal1">REGISTER</a></li>
+          <li><a class="modal-trigger" href="#modal2">CAMPUS AMBASSADOR</a></li>
           {% endif %}
           <li><a class="tooltipped aboutlink" data-position="bottom" data-delay="50" data-tooltip="Vision"  href="#">ABOUT US</a></li>
         </ul>
@@ -515,7 +517,7 @@ OUR TEAM</a></li>
       <div class="container">
          <center><img src="{% static 'banner_2018.png'%}" id="main" class="main-index-image"></center>
          <center>
-           <h4 class="white-text">10<sup>th</sup> and 11<sup>th</sup> March 2018</h4></center>
+           <h4 class="white-text">17<sup>th</sup> and 18<sup>th</sup> March 2018</h4></center>
            <center><h5 class="white-text">International Institute of Information Technology, Naya Raipur</h5></center>
       </div>
      </div>
@@ -587,15 +589,14 @@ OUR TEAM</a></li>
      </div>
     </div>
 
-    <!--<div id="workshop" class="acc-desc">
+    <div id="workshop" >
       <div class="row">
-          <div class="col s9 m9 l9 white-text"><h4>Workshop</h4></div>
-          <a class="close" href="#"><i class="fa fa-times-circle fa-3x" aria-hidden="true"></i></a><br>
-            <center>
-              <h4 class="white-text">We will update soon</h4>
-            </center>
+          <div class="col s12 m12 l12 center white-text"><br><h4>WORKSHOP</h4>
+            <br>
+            <img class="responsive-img" src="{% static 'event_logo/networking.jpg'%}">
           </div>
-      </div>-->
+        </div>
+  </div>
      
 
 <!-- TEAM VIEW -->
@@ -743,14 +744,33 @@ OUR TEAM</a></li>
 
 <!-- Accomodation-->
 <div id="accomodation-details" class="acc-desc">
-      <div class="row">
-        <div class="col s9 m9 l9 white-text"><h4>Hospitality</h4></div>
-        <a class="close" href="#"><i class="fa fa-times-circle fa-3x" aria-hidden="true"></i></a>
-         <center>
-           <h4 class="white-text">We will update soon</h4>
-         </center>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col s12 m12 l12  white-text"><center><h4>Hospitality</h4></center></div>
+    <a class="close" href="#"><i class="fa fa-times-circle fa-3x" aria-hidden="true"></i></a>
+     <div class="col s12 m12 l12 white-text">
+      
+      <center><p style="font-size:2em"><em>Note:</em> 
+        The accommodation will be given in groups. The group which is registered below might be given accommodation together and needs to pay the fee together. 
+        The accommodation charges do not include food facilities. Guest can purchase their meals from the food court, night cafeteria or private hostel canteens or hostel messes. 
+        Boys and girls will be given accommodation in different hostel.
+        You will receive a confirmation mail of payment within 24 hours.
+
+        
+    </p>
+    {% if request.user.is_authenticated %}
+           <h5 class="white-text">
+             Go to dashboard for
+           </h5>
+        {%else %}
+          <h5 class="white-text">
+            Create Account and apply from there.
+          </h5>
+        {%endif %}</center>
+      
+     </div>
+     
+    </div>
+  </div>
     </div>
 <!-- End of accomodation -->
  <!-- Disclaimer and Privacy Policy -->
@@ -821,12 +841,19 @@ or other benefits.</p>
               <div class="col s12 m12 l12">
                   <center><h4 class="white-text">Sponsors</h4></center>
                 </div>
-                <div class="col l4"></div>
+                <div class="col s12 m12 l4">
+                  <center><h4 class="white-text">Hackathon Partner</h4></center>
+                  <center><a href="https://www.github.com/" target="_blank"><img class="responsive-img" src="{% static 'sponsors/GitHub_Logo.png'%}"></a></center>
+                </div>
                 <div class="col s12 m12 l4">
                   <center><h4 class="white-text">IDE Sponsor</h4></center>
                   <center><a href="https://www.jetbrains.com/" target="_blank"><img class="responsive-img" src="{% static 'sponsors/jetbrains.png'%}"></a></center>
                 </div>
-                <div class="col l4">
+                <div class="col s12 m12 l4">
+                  <center><h4 class="white-text">Patron</h4></center>
+                  <center><a href="#" target="_blank"><img class="responsive-img" src="{% static 'sponsors/Bugsee.png'%}"></a></center>
+                </div>
+                <div class="col s12 m12 l4">
                     <center><h4 class="white-text">Design Partner</h4></center>
                     <a href="https://www.sketchapp.com">
                         <svg viewBox="0 0 485 182" xmlns="http://www.w3.org/2000/svg" style="background:#fff">
@@ -847,32 +874,9 @@ or other benefits.</p>
                         </svg>
                     </a>
                 </div>
-              <div class="col s12 m12 l12">
-                  <center><h4 class="white-text">Previous Sponsors</h4></center>
-              </div>
-              <div class="col s12 m12 l12 center">
-                  <center><h4 class="white-text">Title Sponsor</h4></center>
-                  <a href="http://www.chips.gov.in/" target="_blank"><img class="responsive-img" src="{% static 'sponsors/chips.jpg'%}"></a>
-              </div>
-              <div class="col s12 m12 l4">
-                  <center><h5 class="white-text">Gold Sponsor</h5></center>
-                  <center><a href="http://www.nayaraipur.gov.in/" target="_blank"><img class="responsive-img" src="{% static 'sponsors/nrda.jpg'%}"></a></center>
-              </div>
-              <div class="col s12 m12 l4">
-                  <br><br><br><br>
-                  <center><h5 class="white-text">Platform Sponsor</h5></center>
-                  <center><a href="https://www.hackerearth.com/" target="_blank"><img class="responsive-img" src="{% static 'sponsors/HE_logo.png'%}"></a></center>
-              </div>
-              <!--<div class="col s12 m12 l4">
-                  <center><h5 class="white-text">Patron</h5></center>
-                  <center><a href="https://www.jetbrains.com/" target="_blank"><img class="responsive-img" src="{% static 'sponsors/jetbrains.png'%}"></a></center>
-              </div>-->
-              <div class="col s12 m12 l4 center">
-                  <center><h5 class="white-text">Radio Partner</h5></center>
-                  <a href="#" target="_blank"><img class="responsive-img" src="{% static 'sponsors/fm.jpg' %}"></a>
-                  <br><br>
-                  <br><br>
-              </div>
+
+                
+                
           </div>
       </div>
      </div>
@@ -896,10 +900,10 @@ or other benefits.</p>
    <div id="description_events" class="row">
      <div class="col l3"></div>
      <div class="col s12 m12 l6 hoverable" id="tevn1">
-       <div class="card"><span class="card-title text-darken-2 event-title">Pursuit of Appieness</span>
-        <!--<div class="right"><a href="{% static 'documents/Rules-and-Regulations-Breaking-Bugs-IIITNR.pdf'%}" target="_blank" dowaload>Download here<i class="material-icons">archive</i></a></div>-->
+       <div class="card"><span class="card-title text-darken-2 event-title">Pursuit of Appiness</span>
+        <div class="right"><a href="{% static 'documents/Appiness_Technovate_IIITNR.pdf'%}" target="_blank" dowaload>Download here<i class="material-icons">archive</i></a></div>
          <p class="event-details"> 
-            Persuit of appieness is App development event for both iOS and Android. For a given problem statement you need to develop an app (platform you a free to choose) and after several rounds of top 5 will showcase them in Technovate. 
+            Pursuit of appiness is App development event for both iOS and Android ( choice of developers ). For a given problem statement you need to develop an app (platform you a free to choose) and after several rounds of top 5 will showcase them in Technovate. 
           <p>
            <!--<h5>Prizes to be declared soon</h5> -->
          </p>
@@ -918,27 +922,15 @@ or other benefits.</p>
        <div class="card"><span class="card-title text-darken-2 event-title">Game of Codes</span>
           
          <p class="event-details">Sick of all the coding competitions where someone more experienced than you takes away the reward, at game of codes, that is not the case, join us in a competition aimed solely at school students and first year students, make sure you carry your id’s for this one.</p>
-         <!--<h5>Prizes Worth Rs 74K</h5>
-         <hr>
-         <h6 class="text-datken-3">Event Co-ordinator</h6>
-         <div class="event-co">
-           <ul>
-             <li>Shrikant Gupta</li>
-             <li><a href="mailto:shrikant15101@iiitnr.edu.in"><i class="material-icons">email</i></a></li>
-             <li>Yash Kirti Sinha</li>
-             <li><a href="mailto:yashkirtisinha1@gmail.com"><i class="material-icons">email</i></a></li>
-             <li>Ananya Shrivastav</li>
-             <li><a href="mailto:ananya15101@iiitnr.edu.in"><i class="material-icons">email</i></a></li>
-           </ul>
-         </div>-->
+         
        </div>
      </div>
      <div class="col s12 m12 l6 hoverable" id="tevn3">
        <div class="card"><span class="card-title text-darken-2 event-title">Backyard Datascience</span>
-         <!--<div class="right"><a href="{% static 'documents/Rules-and-Regulations-Robo-Valley-IIITNR.pdf'%}" target="_blank" dowaload>Download here<i class="material-icons">archive</i></a></div>-->
-          <p class="event-details">Machine learning & data science are now hot topic in industries. With machine learning and data science now almost everything is possible. Almost everywhere ML is applied. This competetion is about using dataset provided and do analyis and prediction.
-              <br><br>
-              Rules and problem statement will be announced 1st week of February and can be downloaded from here.</p><!--Is your bot the best to navigate through our course of ups and downs, wirelessly drive your bot to victory and take away the amazing award you and your bot deserve. You can download details by clicking download icon.</p>-->
+         <div class="right"><a href="{% static 'documents/Backyard_Data_Science_Technovate_IIITNR.pdf'%}" target="_blank" dowaload>Download here<i class="material-icons">archive</i></a></div>-->
+          <p class="event-details">A two day long contest, comprising online round before the fest and offline rounds in two phases - Spot Round and Final Round. With a given dataset, a team has to apply algorithms and try to find the accuracy for the given target parameters. The dataset will be provided at the time of contest, and the team size can range from 1 to 3 (maximum). Languages supported are R or Python. Libraries can be used, but at the time of presentation, judges can ask the questions related to the used libraries. The Backyard Data Science event is one of it's own kind, among one of the unique ones in India to be held. There will be invited talks by the esteemed panel of judges.
+              
+              </p><!--Is your bot the best to navigate through our course of ups and downs, wirelessly drive your bot to victory and take away the amazing award you and your bot deserve. You can download details by clicking download icon.</p>-->
           <!--<h5>Prizes Worth Rs 7K</h5>
           <hr>
           <h6 class="text-datken-3">Event Co-ordinator</h6>
@@ -964,7 +956,7 @@ or other benefits.</p>
      </div>
      <div class="col s12 m12 l6 hoverable" id="tevn5">
        <div class="card"><span class="card-title text-darker-4 event-title">Wolf Of Web Street</span>
-         <div class="right"><a href="#"><i class="material-icons">more</i></a></div>
+         <div class="right"><a href="{% static 'documents/Wolf_of_webstreet_Technovate_IIITNR.pdf'%}">Download Problem Statement<i class="material-icons">more</i></a></div>
          <p class="event-details">
            An overnight contest in which participants will be given a theme during the course of the event on which they have to bring out the most innovative idea of an app or website solving particular problem. Can implement in any programming language like C/C++, Python, Ruby Node.js etc.
          </p>
@@ -973,18 +965,18 @@ or other benefits.</p>
 
     <div class="col s12 m12 l6 hoverable" id="tevn6">
       <div class="card"><span class="card-title text-darken-4 event-title">Flying Syndrome</span>
-        
+        <div class="right"><a href="{% static 'documents/Flying_Syndrome_Technovate_IIITNR.pdf'%}">Download Problem Statement<i class="material-icons">more</i></a></div>
         <p class="event-details">
-            Nothing like a little aerial superiority, well show off your command in aerial drone design and control over your design here in TechNovate and end the debate that you are the best after all. Fly your drones in a challenging arena and complete the course fastest.
+          We are proud to announce Flying SynDRONE, a self built drone event to encourage robo enthusiasts to actively participate in this event and showcase their multirotor flying skills by successfully tackling various hurdles built by the students of IIIT NR. This event not only provides a platform to learn, build and implement new things but also gives exposure to the latest technologies that would soon be the talk of the town. So put on your flying caps and be ready to create a buzz.
         </p>
       </div>
     </div>
 
     <div class="col s12 m12 l6 hoverable" id="tevn7">
-      <div class="card"><span class="card-title text-darken-4 event-title">Robo Rash</span>
-        
+      <div class="card"><span class="card-title text-darken-4 event-title">Robo Soccer</span>
+        <div class="right"><a href="{% static 'documents/Robo_Soccer_Technovate_IIITNR.pdf'%}">Download Problem Statement<i class="material-icons">more</i></a></div>
         <p class="event-details">
-          Your bot need with other rival bots and beat them in record time by  crossing the finish line first. More details will be updated soon.
+          The most promising event of Technovate Robo Soccer is back again. It's time to turn the zeal of robotics into passion. The event aims  to provide you a platform to create an amalgamation of both 'Robotics' and 'Soccer'(Football) tactics. This will quench your thirst for the robotics. A whole new exposure and experience is guaranteed. The vibes created at the event will enhance your learning and passion.
         </p>
         
       </div>
@@ -992,11 +984,18 @@ or other benefits.</p>
 
     <div class="col s12 m12 l6 hoverable" id="tevn8">
       <div class="card"><span class="card-title text-darken-4 event-title">Robo Dangal </span>
-        
+        <div class="right"><a href="{% static 'documents/Robo_Dangal_Technovate_IIITNR.pdf'%}">Download Problem Statement<i class="material-icons">more</i></a></div>
         <p class="event-details">
-          Fight in desi style with other rival bots and beat them in every possible way.
+          Robo dangal is platform for the young minds to showcase their talent in robotics and also bring alive the fighting spirit.The objective of this game is to build manually controlled bots that can withstand in arena with enough power as both the bots in the arena will try to force the opponent out of the arena just as in Olympics wrestling.But to addition to this, one more interesting thing is added, i.e the bots are allowed to use any type of weapons ( provided it is safe to use) to defeat the opponent.
+Doesn't all this sounds interesting? Then what are you waiting for, let's bring out your hidden warrior
+Register yourself in robo dangal now!
         </p>
-       
+       <p class="event-details">
+         <h5>Contact:</h5>
+         <ul>
+           <li>Anuj: <a href="tel:+91-8004948093"</li>
+         </ul>
+       </p>
       </div>
     </div>
 
@@ -1013,7 +1012,7 @@ more details. You can download more details by clicking download button. </p>
    <div class="col s12 m12 l6 hoverable" id="ntevn2">
      <div class="card"><span class="card-title text-darker-4 event-title">Footloose</span>
        
-       <p class="event-details">
+       <p class="event-details black-text">
          Time to put on your dance shoes and step up your game, let loose and show the world how you
 move, join us in the IIIT NR campus and let loose with your team, refer to the document below for
 more details.
@@ -1032,10 +1031,11 @@ more details.
      </div>
 
      <div class="col s12 m12 l6 hoverable" id="ntevn4">
-      <div class="card"><span class="card-title text-darker-4 event-title">Masters of Universe</span>
+      <div class="card"><span class="card-title text-darker-4 event-title">Quests</span>
         
         <p class="event-details">
-            Enhance your Technical knowledge by participating in the IT Quiz with questions on various disciplines of Information Technology and Engineering. For complete details download the document by clicking download icon.
+          Are you ready to face the adrenaline rush to face the buzzers ? Or to hold on the urge and be like a sage at these times? We roll out the red carpets to welcome you to the region's largest Quizzing event - Questa.
+          Trust your teammate and get ready to face the challenge of 3 different rounds of professional quizzing and be the last team to be standing.
         </p>
         
      </div>
@@ -1147,8 +1147,8 @@ more details.
 {% else %}
 
 <!-- Campus Ambassador Form Modal -->
-   <div id="modal2" class="modal">
-    <div class="modal-content">
+<div id="modal2" class="modal">
+    <div class="modal-content grey-text grey darken-3">
          <span class="card-title">Campus Ambassador </span>
          <form action="{% url 'representative'%}" method="post">
              <div class="row">
@@ -1173,7 +1173,7 @@ more details.
                      <label for="ph">Phone No.</label>
                  </div>
              </div>
-             <button type="submit" value="Apply" class="btn waves-effect waves-light teal">Apply<i class="material-icons right">send</i></button>
+             <button type="submit" value="Apply" class="btn waves-effect waves-light grey">Apply<i class="material-icons right">send</i></button>
          </form>
     </div>
   </div>
@@ -1183,7 +1183,7 @@ more details.
   <div id="modal1" class="modal">
     <div class="modal-content">
       <div class="row">
-      <div class="col s12 m12 l12">
+      <div class="col s12 m12 l12  grey-text darken-3">
            <span class="card-title">Login </span>
            <div class="row">
              <div class="col s12 m12 l4">
@@ -1201,11 +1201,11 @@ more details.
                    <label for="password">Password</label>
                  </div>
                </div>
-                 <button type="submit" value="Log In" class="btn waves-effect waves-light teal">Log In<i class="material-icons right">send</i></button>
+                 <button type="submit" value="Log In" class="btn waves-effect waves-light grey grey-text darken-3">Log In<i class="material-icons right">send</i></button>
                </form><br>
              </div>
              <div class="col s12 m12 l1"></div>
-             <div class="col s12 m12 l7">
+             <div class="col s12 m12 l7 grey-text darken-3">
                <span class="card-title">Sign Up </span>
                <form action="{% url 'register'%}"method="post">
                  {% csrf_token %}
@@ -1240,7 +1240,7 @@ more details.
                       <label for="password">Password</label>
                     </div>
                  </div>
-                 <button type="submit" value="Sign Up" class="btn waves-effect waves-light teal">Sign Up<i class="material-icons right">send</i></button>
+                 <button type="submit" value="Sign Up" class="btn waves-effect waves-light grey grey-text darken-3">Sign Up<i class="material-icons right">send</i></button>
              </form>
              </div>
            </div>
@@ -1248,9 +1248,9 @@ more details.
     </div>
   </div>
   {% endif %}
-  <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+ <!-- <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
 particlesJS("particles-js", {"particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#72ce35"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
-  </script>
+  </script>-->
 </body>
 </html>

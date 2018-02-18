@@ -30,6 +30,12 @@ urlpatterns = [
     url(r'^about$',views.about,name='about'),
     url(r'^verify$',views.verify,name='verify'),
     url(r'^send$',views.s,name='sendchitti'),
+    url(r'pay/', views.pay, name = 'pay'),
+    url(r'Success/', views.success, name='success'),
+    url(r'Failure/', views.failure, name='failure'),
     url(r'^representative$',views.campusRe,name='representative'),
     url(r'^enroll$',views.enrollTo,name="enroll"),
+    url(r'hospitality/', views.update_hosp, name='hosp'),
+    url(r'team/', views.update_team, name='team'),
+    url(r'send_details/', views.send_details, name='send_details'),
 ]

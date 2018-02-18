@@ -259,7 +259,7 @@
 	display: none;
 }
 html{
-	overflow: initial;
+  overflow: initial;
 }
 .nav-logo-technovate{
 	height: 75px;
@@ -275,6 +275,9 @@ html{
 .main-index-image{
   max-width:65%;
   max-height:540px;
+}
+#no-of-tema{
+  display: none
 }
 
 
@@ -325,11 +328,14 @@ html{
 .event-title{
 	font-size: 2em;
 }
+#celeb{
+  display: none;
+}
 .acc-desc{
   padding: 15px 15px 15px 15px;
   height: 100%;
   width: 100%;
-  background: #716B66;
+  background: transparent;
   overflow:initial;
   transition: 0.2s;
   background-size: cover;

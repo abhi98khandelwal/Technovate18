@@ -12,6 +12,7 @@ $('#sponsors').hide("fast");
 $('#aboutus').hide("fast");
 $('#tech-team').hide("fast");
 $('#title').hide("fast");
+
 $('#tevents').show();
 $('#workshop').hide();
 $('.acc-desc').hide();

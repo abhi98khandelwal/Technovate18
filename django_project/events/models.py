@@ -22,19 +22,21 @@ class Events(models.Model):
     def __str__(self):
         return self.EventName
 
-
 #Table for participants registering for event in Technovate
 class Profile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     Name = models.CharField(max_length=100,blank=True)
     events = models.ManyToManyField(Events,blank=True)
     PhoneNo = models.CharField(max_length=10)
     Institute_Uni = models.CharField(max_length=100)
-    payment_to_be_paid = models.DecimalField(max_digits=5,decimal_places=2,default=0)
-    payment_paid = models.DecimalField(max_digits=5,decimal_places=2,default=0)
+    payment_to_be_paid = models.IntegerField(default=250)
+    payment_paid = models.IntegerField(default=0)
     is_active = models.BooleanField(null=False,default=False)
     secret_code = models.CharField(max_length=5,default=0)
-
+    is_paid = models.BooleanField(default=False)
+    number_of_team_members = models.IntegerField(default=0)
+    is_hosp = models.BooleanField(default=False)
+    payment_mode = models.CharField(default='Online', max_length=10)
 
     #get_participated_in function for retrieving list of participated events by profile
     def get_participated_in(self):
@@ -56,6 +58,9 @@ class Profile(models.Model):
 
     def payment_pay(self):
         return self.payment_paid
+
+    def get_no_of_team_membmers(self):
+        return str(self.number_of_team_members)
 
     # in progress
     class Admin:
